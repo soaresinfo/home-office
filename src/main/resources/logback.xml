@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration scan="false">
+
+	<!-- Configura pasta de logs e arquivamento -->
+	<property name="LOGS_FOLDER" value="logs" />
+
+	<property name="LOGS_TO_COLLECT_FOLDER" value="${LOGS_FOLDER}/logs-to-collect" />
+
+	<!-- Apender para ser utilizado em desenvolvimento, detalhado e com stack 
+		trace completo -->
+	<appender name="log-desenvolvimento" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} %thread %-5level %logger - %m %xThrowable%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Appender para ser utilizado em producao, leve e com stack trace de 
+		duas linhas, deve ser utilizado a partir de WARN -->
+	<appender name="log-aplicacao"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS_FOLDER}/log-aplicacao.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOGS_TO_COLLECT_FOLDER}/log-aplicacao.%d{yyyyMMdd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} %thread %-5level %logger{36} - %m %throwable{2}%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Apender para troubleshooting, detalhado e com stack trace completo, 
+		limitado a 20 arquivos de 10MB para nao saturar o filesystem -->
+	<appender name="log-troubleshooting"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+		<file>${LOGS_FOLDER}/log-troubleshooting.log</file>
+
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${LOGS_FOLDER}/log-troubleshooting.%i.log</fileNamePattern>
+			<maxIndex>20</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>10MB</maxFileSize>
+		</triggeringPolicy>
+
+		<encoder>
+			<pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} %thread %-5level %logger - %m
+				%xThrowable%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Apender para classes de auditoria, direcionado para um package especifico 
+		de auditoria, nao imprime a data nem o logger pois o framework de auditoria 
+		deve tratar isso -->
+	<appender name="log-auditoria" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS_FOLDER}/log-auditoria.log</file>
+		
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOGS_TO_COLLECT_FOLDER}/log-auditoria.%d{yyyyMMdd}.log.gzip</fileNamePattern>
+		</rollingPolicy>
+		
+		<encoder>
+			<pattern>%m %throwable{0}%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="log-monitoria" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS_FOLDER}/log-monitoria.log</file>
+		
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOGS_TO_COLLECT_FOLDER}/log-monitoria.%d{yyyyMMdd}.log.gzip</fileNamePattern>
+		</rollingPolicy>
+		
+		<encoder>
+			<pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} - %-5level - %m %xThrowable%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Logger para auditoria -->
+	<logger name="com.br.gerador.prjservicosgerados.auditoria" additivity="false" level="TRACE">
+		<appender-ref ref="log-auditoria" />
+	</logger>
+
+	<!-- Logger para monitoria de atividades -->
+	<logger name="com.br.gerador.prjservicosgerados.monitoria" additivity="false" level="INFO">
+		<appender-ref ref="log-monitoria" />
+	</logger>
+
+	<!-- Logger para troubleshooting -->
+	<logger name="com.br.gerador.prjservicosgerados.troubleshooting" additivity="false" level="TRACE">
+		<appender-ref ref="log-troubleshooting" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root level="TRACE">
+		<appender-ref ref="log-aplicacao" />
+	</root>
+
+</configuration>
