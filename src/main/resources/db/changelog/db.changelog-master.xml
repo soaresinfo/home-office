@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+	<changeSet id="1" author="alan.franco">
+		<createTable tableName="person">
+			<column name="id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+
+			<column name="firstname" type="varchar(50)" />
+
+			<column name="lastname" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="state" type="char(2)" />
+		</createTable>
+	</changeSet>
+	
+	<changeSet id="" author=""></changeSet>
+
+	<changeSet id="2" author="alan.franco">
+		<addColumn tableName="person">
+			<column name="username" type="varchar(8)" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="3" author="alan.franco">
+		<addLookupTable existingTableName="person"
+			existingColumnName="state" newTableName="state" newColumnName="id"
+			newColumnDataType="char(2)" />
+	</changeSet>
+	
+    <include file="create-table-alan.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-agendaeveris.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-caneta.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-carro.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-carteira.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-computador.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-evandro.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-joao.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-livro.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-marcos.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="create-table-phoneouvido.xml" relativeToChangelogFile="true"/> 	 	
+ 	<include file="create-table-sebastiao.xml" relativeToChangelogFile="true"/> 	
+ 	<include file="alter-table-add-column-table-evandro.xml" relativeToChangelogFile="true"/>
+ 	
+</databaseChangeLog>
