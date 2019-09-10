@@ -38,18 +38,7 @@
 			newColumnDataType="char(2)" />
 	</changeSet>
 	
-<!--     <include file="create-table-alan.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-agendaeveris.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-caneta.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-carro.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-carteira.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-computador.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-evandro.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-joao.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-livro.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-marcos.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="create-table-phoneouvido.xml" relativeToChangelogFile="true"/> 	 	 -->
-<!--  	<include file="create-table-sebastiao.xml" relativeToChangelogFile="true"/> 	 -->
-<!--  	<include file="alter-table-add-column-table-evandro.xml" relativeToChangelogFile="true"/> -->
+    <include file="create-table-alan.xml" relativeToChangelogFile="true"/>
+ 	<include file="create-table-evandro.xml" relativeToChangelogFile="true"/>
  	
 </databaseChangeLog>
