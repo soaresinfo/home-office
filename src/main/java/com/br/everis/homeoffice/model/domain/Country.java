@@ -1,14 +1,15 @@
 package com.br.everis.homeoffice.model.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,8 +43,9 @@ public class Country extends BaseDomain {
 	@Column(name = "preco", precision = 18, scale = 3)
 	private Double preco;
 
-	@Column(name = "dataCadastro")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataCadastro;
+	@JsonProperty("dataCadastro")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
+	@Column(name = "dataCadastro")	
+	private LocalDate dataCadastro;
 
 }

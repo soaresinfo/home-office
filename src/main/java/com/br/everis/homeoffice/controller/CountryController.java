@@ -71,7 +71,7 @@ public class CountryController extends BaseController {
 	}
 
 	@ApiOperation(value = "Deletar um registro de acordo com o id informado na requisição.")
-	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deletar(@PathVariable("id") Long id) {
 		try {
 			countryServiceFachada.deletar(id);
