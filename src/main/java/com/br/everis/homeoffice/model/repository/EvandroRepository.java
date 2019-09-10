@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.br.everis.homeoffice.model.domain.Evandro;                             
+import com.br.everis.homeoffice.model.domain.Country;                             
                                                                                         
 /**                                                                                     
  * @author alan.franco                                                                  
@@ -14,6 +14,6 @@ import com.br.everis.homeoffice.model.domain.Evandro;
  *                                                                                      
  */                                                                                     
 @Repository                                                                             
-public interface EvandroRepository extends JpaRepository<Evandro, Long>, Serializable {       
+public interface EvandroRepository extends JpaRepository<Country, Long>, Serializable {       
                                                                                         
 }                                                                                       

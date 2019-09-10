@@ -9,16 +9,16 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.br.everis.homeoffice.model.domain.Evandro;
+import com.br.everis.homeoffice.model.domain.Country;
 import com.br.everis.homeoffice.model.repository.EvandroRepository;
-import com.br.everis.homeoffice.model.service.fachada.IEvandroServiceFachada;                                                                                           
+import com.br.everis.homeoffice.model.service.fachada.ICountryServiceFachada;                                                                                           
                                                                                                                        
 /**                                                                                                                    
  * @author alan.franco                                                                                                 
  *                                                                                                                     
  */                                                                                                                    
 @Service                                                                                                               
-public class EvandroService extends BaseService implements IEvandroServiceFachada {                                           
+public class CountryService extends BaseService implements ICountryServiceFachada {                                           
                                                                                                                        
 	/**                                                                                                                   
 	 * Injetando as dependências da interface de abstração do spring data                                                 
@@ -27,14 +27,14 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
 	@Autowired                                                                                                            
 	private EvandroRepository geradorRepository;
 	
-	public EvandroService() {                                                                                                
+	public CountryService() {                                                                                                
 		super();
 		
 	}                                                                                                                     
                                                                                                                        
 	@Override                                                                                                             
-	public List<Evandro> listarTodos() throws Exception {                                                                    
-		List<Evandro> retorno = new ArrayList<Evandro>();                                                                       
+	public List<Country> listarTodos() throws Exception {                                                                    
+		List<Country> retorno = new ArrayList<Country>();                                                                       
 		try {                                                                                                             
 			retorno = this.geradorRepository.findAll();                                                                   
 		} catch (Exception e) {                                                                                           
@@ -45,8 +45,8 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
 	}                                                                                                                     
                                                                                                                        
 	@Override                                                                                                             
-	public Evandro buscarPorId(Long id) throws Exception {                                                                   
-		Optional<Evandro> retorno = null;                                                                                    
+	public Country buscarPorId(Long id) throws Exception {                                                                   
+		Optional<Country> retorno = null;                                                                                    
 		try {                                                                                                             
 			retorno = this.geradorRepository.findById(id);                                                                
 		} catch (Exception e) {                                                                                           
@@ -58,8 +58,8 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
                                                                                                                        
 	@Transactional                                                                                                        
 	@Override                                                                                                             
-	public Evandro salvar(Evandro evandro) throws Exception {                                                                      
-		Evandro retorno = new Evandro();                                                                                        
+	public Country salvar(Country evandro) throws Exception {                                                                      
+		Country retorno = new Country();                                                                                        
 		try {                                                                                                             
 			validarCamposObrigatorioSalvar(evandro);                                                                         
 			retorno = this.geradorRepository.save(evandro);                                                                  
@@ -78,7 +78,7 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
 	 *             foram informados antes da operação de salva                                                            
 	 * @throws Exception                                                                                                  
 	 */                                                                                                                   
-	private void validarCamposObrigatorioSalvar(Evandro evandro) throws Exception {                                             
+	private void validarCamposObrigatorioSalvar(Country evandro) throws Exception {                                             
 		StringBuilder camposNaoInformados = new StringBuilder();                                                          
                                                                                                                        
 		camposNaoInformados.append("[ ");                                                                                 
@@ -97,8 +97,8 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
 	@Transactional                                                                                                        
 	@Modifying                                                                                                            
 	@Override                                                                                                             
-	public Evandro editar(Evandro evandro) throws Exception {                                                                      
-		Evandro retorno = new Evandro();                                                                                        
+	public Country editar(Country evandro) throws Exception {                                                                      
+		Country retorno = new Country();                                                                                        
 		try {                                                                                                             
 			retorno = this.geradorRepository.save(evandro);                                                                  
 		} catch (Exception e) {                                                                                           

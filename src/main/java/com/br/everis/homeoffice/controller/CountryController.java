@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.everis.homeoffice.model.domain.Evandro;
-import com.br.everis.homeoffice.model.service.fachada.IEvandroServiceFachada;
+import com.br.everis.homeoffice.model.domain.Country;
+import com.br.everis.homeoffice.model.service.fachada.ICountryServiceFachada;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -20,12 +20,12 @@ import io.swagger.annotations.ApiOperation;
  */
 @RestController
 @RequestMapping("/evandro")
-public class EvandroController extends BaseController {
+public class CountryController extends BaseController {
 
 	@Autowired
-	private IEvandroServiceFachada evandroServiceFachada;
+	private ICountryServiceFachada evandroServiceFachada;
 
-	public EvandroController() {
+	public CountryController() {
 		super();
 	}
 
@@ -51,7 +51,7 @@ public class EvandroController extends BaseController {
 
 	@ApiOperation(value = "Salvar um novo registro no banco.")
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public ResponseEntity<Object> salvar(Evandro evandro) {
+	public ResponseEntity<Object> salvar(Country evandro) {
 		try {
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(evandroServiceFachada.salvar(evandro));
 		} catch (Exception e) {
@@ -61,7 +61,7 @@ public class EvandroController extends BaseController {
 
 	@ApiOperation(value = "Editar um registro de acordo com o id informado na requisição.")
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Evandro evandro) {
+	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Country evandro) {
 		try {
 			evandro.setId(id);
 			return ResponseEntity.status(HttpStatus.OK).body(evandroServiceFachada.editar(evandro));

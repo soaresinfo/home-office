@@ -24,7 +24,7 @@ import lombok.ToString;
 @ToString                                                                         
 @Entity                                                                           
 @Table(name = "tb_evandro")  
-public class Evandro extends BaseDomain {    
+public class Country extends BaseDomain {    
                                                                                   
 	private static final long serialVersionUID = -9158814171554795891L;              
                                                                                   
