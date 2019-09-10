@@ -38,7 +38,7 @@ public class CountryService extends BaseService implements ICountryServiceFachad
 		try {                                                                                                             
 			retorno = this.geradorRepository.findAll();                                                                   
 		} catch (Exception e) {                                                                                           
-			super.LOGGER.error("Ocorreu um erro na classe: EvandroService >> listarTodos(): " + e.getMessage());            
+			super.LOGGER.error("Ocorreu um erro na classe: CountryService >> listarTodos(): " + e.getMessage());            
 			
 		}                                                                                                                 
 		return retorno;                                                                                                   
@@ -50,7 +50,7 @@ public class CountryService extends BaseService implements ICountryServiceFachad
 		try {                                                                                                             
 			retorno = this.geradorRepository.findById(id);                                                                
 		} catch (Exception e) {                                                                                           
-			super.LOGGER.error("Ocorreu um erro na classe: EvandroService >> buscarPorId(Long id): " + e.getMessage());     
+			super.LOGGER.error("Ocorreu um erro na classe: CountryService >> buscarPorId(Long id): " + e.getMessage());     
 			                                                           
 		}                                                                                                                 
 		return retorno.get();                                                                                             
@@ -58,31 +58,31 @@ public class CountryService extends BaseService implements ICountryServiceFachad
                                                                                                                        
 	@Transactional                                                                                                        
 	@Override                                                                                                             
-	public Country salvar(Country evandro) throws Exception {                                                                      
+	public Country salvar(Country country) throws Exception {                                                                      
 		Country retorno = new Country();                                                                                        
 		try {                                                                                                             
-			validarCamposObrigatorioSalvar(evandro);                                                                         
-			retorno = this.geradorRepository.save(evandro);                                                                  
+			validarCamposObrigatorioSalvar(country);                                                                         
+			retorno = this.geradorRepository.save(country);                                                                  
 		} catch (Exception e) {                                                                                           
 			super.LOGGER.error(                                                                                           
-					"Ocorreu um erro na classe: EvandroService >> salvar(ObjetoDominio objetoDominio): " + e.getMessage()); 
+					"Ocorreu um erro na classe: CountryService >> salvar(ObjetoDominio objetoDominio): " + e.getMessage()); 
 			                                                           
 		}                                                                                                                 
 		return retorno;                                                                                                   
 	}                                                                                                                     
                                                                                                                        
 	/**                                                                                                                   
-	 * @param evandro                                                                                                        
+	 * @param country                                                                                                        
 	 *                                                                                                                    
 	 *             Método responsável por validar se todos os campos obrigatórios                                         
 	 *             foram informados antes da operação de salva                                                            
 	 * @throws Exception                                                                                                  
 	 */                                                                                                                   
-	private void validarCamposObrigatorioSalvar(Country evandro) throws Exception {                                             
+	private void validarCamposObrigatorioSalvar(Country country) throws Exception {                                             
 		StringBuilder camposNaoInformados = new StringBuilder();                                                          
                                                                                                                        
 		camposNaoInformados.append("[ ");                                                                                 
-		if (evandro.getPreco() <= 0) {                                                                         
+		if (country.getPreco() <= 0) {                                                                         
 			camposNaoInformados.append("preco");                                                                            
          camposNaoInformados.append(",");                                                                                                                       
 		}                                                                                                                 
@@ -97,13 +97,13 @@ public class CountryService extends BaseService implements ICountryServiceFachad
 	@Transactional                                                                                                        
 	@Modifying                                                                                                            
 	@Override                                                                                                             
-	public Country editar(Country evandro) throws Exception {                                                                      
+	public Country editar(Country country) throws Exception {                                                                      
 		Country retorno = new Country();                                                                                        
 		try {                                                                                                             
-			retorno = this.geradorRepository.save(evandro);                                                                  
+			retorno = this.geradorRepository.save(country);                                                                  
 		} catch (Exception e) {                                                                                           
 			super.LOGGER.error(                                                                                           
-					"Ocorreu um erro na classe: EvandroService >> editar(ObjetoDominio objetoDominio): " + e.getMessage());  
+					"Ocorreu um erro na classe: CountryService >> editar(ObjetoDominio objetoDominio): " + e.getMessage());  
 //			throw new Exception(gson.toJson(retornoException));                                                           
 		}                                                                                                                 
 		return retorno;                                                                                                   
@@ -115,7 +115,7 @@ public class CountryService extends BaseService implements ICountryServiceFachad
 		try {                                                                                                             
 			this.geradorRepository.deleteById(id);                                                                        
 		} catch (Exception e) {                                                                                           
-			super.LOGGER.error("Ocorreu um erro na classe: EvandroService >> (Long id): " + e.getMessage());               
+			super.LOGGER.error("Ocorreu um erro na classe: CountryService >> (Long id): " + e.getMessage());               
 //			throw new Exception(gson.toJson(retornoException));                                                           
 		}                                                                                                                 
 	}                                                                                                                     

@@ -25,13 +25,13 @@ public interface ICountryServiceFachada {
 	 * @param gerador                                                                
 	 * @return                                                                       
 	 */                                                                              
-	Country salvar(Country evandro) throws Exception;                                         
+	Country salvar(Country country) throws Exception;                                         
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     
 	 * @return                                                                       
 	 */                                                                              
-	Country editar(Country evandro) throws Exception;                                         
+	Country editar(Country country) throws Exception;                                         
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     

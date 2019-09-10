@@ -98,7 +98,7 @@
 	</logger>
 
 	<!-- Root Logger -->
-	<root level="TRACE">
+	<root level="INFO">
 		<appender-ref ref="log-aplicacao" />
 	</root>
 
