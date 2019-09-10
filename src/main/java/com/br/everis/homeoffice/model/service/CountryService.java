@@ -9,48 +9,48 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.br.everis.homeoffice.model.domain.Evandro;
-import com.br.everis.homeoffice.model.repository.EvandroRepository;
-import com.br.everis.homeoffice.model.service.fachada.IEvandroServiceFachada;                                                                                           
+import com.br.everis.homeoffice.model.domain.Country;
+import com.br.everis.homeoffice.model.repository.CountryRepository;
+import com.br.everis.homeoffice.model.service.fachada.ICountryServiceFachada;                                                                                           
                                                                                                                        
 /**                                                                                                                    
  * @author alan.franco                                                                                                 
  *                                                                                                                     
  */                                                                                                                    
 @Service                                                                                                               
-public class EvandroService extends BaseService implements IEvandroServiceFachada {                                           
+public class CountryService extends BaseService implements ICountryServiceFachada {                                           
                                                                                                                        
 	/**                                                                                                                   
 	 * Injetando as dependências da interface de abstração do spring data                                                 
 	 * responsável pelo acesso aos dados deste objeto                                                                     
 	 */                                                                                                                   
 	@Autowired                                                                                                            
-	private EvandroRepository geradorRepository;
+	private CountryRepository geradorRepository;
 	
-	public EvandroService() {                                                                                                
+	public CountryService() {                                                                                                
 		super();
 		
 	}                                                                                                                     
                                                                                                                        
 	@Override                                                                                                             
-	public List<Evandro> listarTodos() throws Exception {                                                                    
-		List<Evandro> retorno = new ArrayList<Evandro>();                                                                       
+	public List<Country> listarTodos() throws Exception {                                                                    
+		List<Country> retorno = new ArrayList<Country>();                                                                       
 		try {                                                                                                             
 			retorno = this.geradorRepository.findAll();                                                                   
 		} catch (Exception e) {                                                                                           
-			super.LOGGER.error("Ocorreu um erro na classe: EvandroService >> listarTodos(): " + e.getMessage());            
+			super.LOGGER.error("Ocorreu um erro na classe: CountryService >> listarTodos(): " + e.getMessage());            
 			
 		}                                                                                                                 
 		return retorno;                                                                                                   
 	}                                                                                                                     
                                                                                                                        
 	@Override                                                                                                             
-	public Evandro buscarPorId(Long id) throws Exception {                                                                   
-		Optional<Evandro> retorno = null;                                                                                    
+	public Country buscarPorId(Long id) throws Exception {                                                                   
+		Optional<Country> retorno = null;                                                                                    
 		try {                                                                                                             
 			retorno = this.geradorRepository.findById(id);                                                                
 		} catch (Exception e) {                                                                                           
-			super.LOGGER.error("Ocorreu um erro na classe: EvandroService >> buscarPorId(Long id): " + e.getMessage());     
+			super.LOGGER.error("Ocorreu um erro na classe: CountryService >> buscarPorId(Long id): " + e.getMessage());     
 			                                                           
 		}                                                                                                                 
 		return retorno.get();                                                                                             
@@ -58,31 +58,31 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
                                                                                                                        
 	@Transactional                                                                                                        
 	@Override                                                                                                             
-	public Evandro salvar(Evandro evandro) throws Exception {                                                                      
-		Evandro retorno = new Evandro();                                                                                        
+	public Country salvar(Country country) throws Exception {                                                                      
+		Country retorno = new Country();                                                                                        
 		try {                                                                                                             
-			validarCamposObrigatorioSalvar(evandro);                                                                         
-			retorno = this.geradorRepository.save(evandro);                                                                  
+			validarCamposObrigatorioSalvar(country);                                                                         
+			retorno = this.geradorRepository.save(country);                                                                  
 		} catch (Exception e) {                                                                                           
 			super.LOGGER.error(                                                                                           
-					"Ocorreu um erro na classe: EvandroService >> salvar(ObjetoDominio objetoDominio): " + e.getMessage()); 
+					"Ocorreu um erro na classe: CountryService >> salvar(ObjetoDominio objetoDominio): " + e.getMessage()); 
 			                                                           
 		}                                                                                                                 
 		return retorno;                                                                                                   
 	}                                                                                                                     
                                                                                                                        
 	/**                                                                                                                   
-	 * @param evandro                                                                                                        
+	 * @param country                                                                                                        
 	 *                                                                                                                    
 	 *             Método responsável por validar se todos os campos obrigatórios                                         
 	 *             foram informados antes da operação de salva                                                            
 	 * @throws Exception                                                                                                  
 	 */                                                                                                                   
-	private void validarCamposObrigatorioSalvar(Evandro evandro) throws Exception {                                             
+	private void validarCamposObrigatorioSalvar(Country country) throws Exception {                                             
 		StringBuilder camposNaoInformados = new StringBuilder();                                                          
                                                                                                                        
 		camposNaoInformados.append("[ ");                                                                                 
-		if (evandro.getPreco() <= 0) {                                                                         
+		if (country.getPreco() <= 0) {                                                                         
 			camposNaoInformados.append("preco");                                                                            
          camposNaoInformados.append(",");                                                                                                                       
 		}                                                                                                                 
@@ -97,13 +97,13 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
 	@Transactional                                                                                                        
 	@Modifying                                                                                                            
 	@Override                                                                                                             
-	public Evandro editar(Evandro evandro) throws Exception {                                                                      
-		Evandro retorno = new Evandro();                                                                                        
+	public Country editar(Country country) throws Exception {                                                                      
+		Country retorno = new Country();                                                                                        
 		try {                                                                                                             
-			retorno = this.geradorRepository.save(evandro);                                                                  
+			retorno = this.geradorRepository.save(country);                                                                  
 		} catch (Exception e) {                                                                                           
 			super.LOGGER.error(                                                                                           
-					"Ocorreu um erro na classe: EvandroService >> editar(ObjetoDominio objetoDominio): " + e.getMessage());  
+					"Ocorreu um erro na classe: CountryService >> editar(ObjetoDominio objetoDominio): " + e.getMessage());  
 //			throw new Exception(gson.toJson(retornoException));                                                           
 		}                                                                                                                 
 		return retorno;                                                                                                   
@@ -115,7 +115,7 @@ public class EvandroService extends BaseService implements IEvandroServiceFachad
 		try {                                                                                                             
 			this.geradorRepository.deleteById(id);                                                                        
 		} catch (Exception e) {                                                                                           
-			super.LOGGER.error("Ocorreu um erro na classe: EvandroService >> (Long id): " + e.getMessage());               
+			super.LOGGER.error("Ocorreu um erro na classe: CountryService >> (Long id): " + e.getMessage());               
 //			throw new Exception(gson.toJson(retornoException));                                                           
 		}                                                                                                                 
 	}                                                                                                                     
