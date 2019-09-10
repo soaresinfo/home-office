@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.br.everis.homeoffice.model.domain.Country;
-import com.br.everis.homeoffice.model.repository.EvandroRepository;
+import com.br.everis.homeoffice.model.repository.CountryRepository;
 import com.br.everis.homeoffice.model.service.fachada.ICountryServiceFachada;                                                                                           
                                                                                                                        
 /**                                                                                                                    
@@ -25,7 +25,7 @@ public class CountryService extends BaseService implements ICountryServiceFachad
 	 * responsável pelo acesso aos dados deste objeto                                                                     
 	 */                                                                                                                   
 	@Autowired                                                                                                            
-	private EvandroRepository geradorRepository;
+	private CountryRepository geradorRepository;
 	
 	public CountryService() {                                                                                                
 		super();

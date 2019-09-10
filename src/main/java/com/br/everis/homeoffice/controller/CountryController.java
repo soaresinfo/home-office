@@ -19,11 +19,11 @@ import io.swagger.annotations.ApiOperation;
  * 
  */
 @RestController
-@RequestMapping("/evandro")
+@RequestMapping("/country")
 public class CountryController extends BaseController {
 
 	@Autowired
-	private ICountryServiceFachada evandroServiceFachada;
+	private ICountryServiceFachada countryServiceFachada;
 
 	public CountryController() {
 		super();
@@ -33,7 +33,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/listar-todos", method = RequestMethod.GET)
 	public ResponseEntity<Object> listarTodos() {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(evandroServiceFachada.listarTodos());
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.listarTodos());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -43,7 +43,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/buscar-por-id", method = RequestMethod.GET)
 	public ResponseEntity<Object> buscarPorId(Long id) {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(evandroServiceFachada.buscarPorId(id));
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.buscarPorId(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -53,7 +53,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public ResponseEntity<Object> salvar(Country evandro) {
 		try {
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(evandroServiceFachada.salvar(evandro));
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(countryServiceFachada.salvar(evandro));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -64,7 +64,7 @@ public class CountryController extends BaseController {
 	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Country evandro) {
 		try {
 			evandro.setId(id);
-			return ResponseEntity.status(HttpStatus.OK).body(evandroServiceFachada.editar(evandro));
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.editar(evandro));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -74,7 +74,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
 	public ResponseEntity<Object> deletar(@PathVariable("id") Long id) {
 		try {
-			evandroServiceFachada.deletar(id);
+			countryServiceFachada.deletar(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Registro excluído com sucesso!");
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

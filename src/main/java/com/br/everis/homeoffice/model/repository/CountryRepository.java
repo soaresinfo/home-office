@@ -14,6 +14,6 @@ import com.br.everis.homeoffice.model.domain.Country;
  *                                                                                      
  */                                                                                     
 @Repository                                                                             
-public interface EvandroRepository extends JpaRepository<Country, Long>, Serializable {       
+public interface CountryRepository extends JpaRepository<Country, Long>, Serializable {       
                                                                                         
 }                                                                                       
