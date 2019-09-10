@@ -14,10 +14,8 @@
                                                                                                   
 			<column name="descricao" type="varchar(100)" />                                                
                                                                                                   
-			<column name="status" type="BIT(1)" />                                                    
-                                                                                                  
-			<column name="preco" type="numeric(18,3)" />                                             
-                                                                                                  
+			<column name="status" type="BIT(1)" />
+			                                                
 			<column name="dataCadastro" type="TIMESTAMP" />                                             
                                                                                                   
 		</createTable>                                                                               

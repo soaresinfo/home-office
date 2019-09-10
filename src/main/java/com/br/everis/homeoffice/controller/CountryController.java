@@ -51,9 +51,9 @@ public class CountryController extends BaseController {
 
 	@ApiOperation(value = "Salvar um novo registro no banco.")
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public ResponseEntity<Object> salvar(Country evandro) {
+	public ResponseEntity<Object> salvar(Country country) {
 		try {
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(countryServiceFachada.salvar(evandro));
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(countryServiceFachada.salvar(country));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -61,10 +61,10 @@ public class CountryController extends BaseController {
 
 	@ApiOperation(value = "Editar um registro de acordo com o id informado na requisição.")
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Country evandro) {
+	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Country country) {
 		try {
-			evandro.setId(id);
-			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.editar(evandro));
+			country.setId(id);
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.editar(country));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -25,7 +27,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 @ToString
 @Entity
-@Table(name = "tb_evandro")
+@Table(name = "tb_country")
 public class Country extends BaseDomain {
 
 	private static final long serialVersionUID = -9158814171554795891L;
@@ -40,12 +42,10 @@ public class Country extends BaseDomain {
 	@Column(name = "status")
 	private Boolean status;
 
-	@Column(name = "preco", precision = 18, scale = 3)
-	private Double preco;
-
 	@JsonProperty("dataCadastro")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
-	@Column(name = "dataCadastro")	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@Column(name = "dataCadastro")
 	private LocalDate dataCadastro;
 
 }

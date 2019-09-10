@@ -11,7 +11,7 @@ A arquitetura utiliza um case de tecnologias que permitir a nossa API atender re
 *	Automação de entregas em ambientes de alta disponibilidade e distribuídos;
 *	Segurança contra ataques virtuais;
 
-A arquitetura possui uma divisão de camadas para redução da quantidade de código nos arquivos como todos. Essa divisão foi criada seguindo o padrão MVC objetivando o baixo acoplamento entre as classe e a alta coesão;
+A arquitetura possui uma divisão de camadas para redução da quantidade de código nos arquivos implementados. Essa divisão foi criada seguindo o padrão MVC objetivando o baixo acoplamento entre as classe e a alta coesão;
 
 * Significado de Baixo acoplamento: Consiste em classes com poucas dependências com intuito de baixar a complexidade do algoritmo implementado em seu interior, desta forma teremos facilidades na implementação de testes unitários e evoluções futuros;
 
