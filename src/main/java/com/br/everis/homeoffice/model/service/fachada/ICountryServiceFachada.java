@@ -2,36 +2,36 @@ package com.br.everis.homeoffice.model.service.fachada;
                                                                                   
 import java.util.List;
 
-import com.br.everis.homeoffice.model.domain.Evandro;                       
+import com.br.everis.homeoffice.model.domain.Country;                       
                                                                                   
 /**                                                                               
  * @author alan.franco                                                            
  *                                                                                
  */                                                                               
-public interface IEvandroServiceFachada {                                             
+public interface ICountryServiceFachada {                                             
                                                                                   
 	/**                                                                              
 	 * @return                                                                       
 	 */                                                                              
-	List<Evandro> listarTodos() throws Exception;                                       
+	List<Country> listarTodos() throws Exception;                                       
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     
 	 * @return                                                                       
 	 */                                                                              
-	Evandro buscarPorId(Long id) throws Exception;                                      
+	Country buscarPorId(Long id) throws Exception;                                      
                                                                                   
 	/**                                                                              
 	 * @param gerador                                                                
 	 * @return                                                                       
 	 */                                                                              
-	Evandro salvar(Evandro evandro) throws Exception;                                         
+	Country salvar(Country country) throws Exception;                                         
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     
 	 * @return                                                                       
 	 */                                                                              
-	Evandro editar(Evandro evandro) throws Exception;                                         
+	Country editar(Country country) throws Exception;                                         
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     

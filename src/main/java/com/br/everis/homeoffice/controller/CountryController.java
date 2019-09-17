@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.everis.homeoffice.model.domain.Evandro;
-import com.br.everis.homeoffice.model.service.fachada.IEvandroServiceFachada;
+import com.br.everis.homeoffice.model.domain.Country;
+import com.br.everis.homeoffice.model.service.fachada.ICountryServiceFachada;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -19,13 +19,13 @@ import io.swagger.annotations.ApiOperation;
  * 
  */
 @RestController
-@RequestMapping("/evandro")
-public class EvandroController extends BaseController {
+@RequestMapping("/country")
+public class CountryController extends BaseController {
 
 	@Autowired
-	private IEvandroServiceFachada evandroServiceFachada;
+	private ICountryServiceFachada countryServiceFachada;
 
-	public EvandroController() {
+	public CountryController() {
 		super();
 	}
 
@@ -33,7 +33,7 @@ public class EvandroController extends BaseController {
 	@RequestMapping(value = "/listar-todos", method = RequestMethod.GET)
 	public ResponseEntity<Object> listarTodos() {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(evandroServiceFachada.listarTodos());
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.listarTodos());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -43,7 +43,7 @@ public class EvandroController extends BaseController {
 	@RequestMapping(value = "/buscar-por-id", method = RequestMethod.GET)
 	public ResponseEntity<Object> buscarPorId(Long id) {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(evandroServiceFachada.buscarPorId(id));
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.buscarPorId(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -51,9 +51,9 @@ public class EvandroController extends BaseController {
 
 	@ApiOperation(value = "Salvar um novo registro no banco.")
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public ResponseEntity<Object> salvar(Evandro evandro) {
+	public ResponseEntity<Object> salvar(Country country) {
 		try {
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(evandroServiceFachada.salvar(evandro));
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(countryServiceFachada.salvar(country));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -61,20 +61,20 @@ public class EvandroController extends BaseController {
 
 	@ApiOperation(value = "Editar um registro de acordo com o id informado na requisição.")
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Evandro evandro) {
+	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Country country) {
 		try {
-			evandro.setId(id);
-			return ResponseEntity.status(HttpStatus.OK).body(evandroServiceFachada.editar(evandro));
+			country.setId(id);
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.editar(country));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
 	}
 
 	@ApiOperation(value = "Deletar um registro de acordo com o id informado na requisição.")
-	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deletar(@PathVariable("id") Long id) {
 		try {
-			evandroServiceFachada.deletar(id);
+			countryServiceFachada.deletar(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Registro excluído com sucesso!");
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
