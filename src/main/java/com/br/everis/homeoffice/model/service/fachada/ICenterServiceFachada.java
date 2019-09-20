@@ -12,5 +12,5 @@ public interface ICenterServiceFachada {
 
 	List<Center> findAll();
 	
-	void save(Center center);
+	Center save(Center center);
 }

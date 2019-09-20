@@ -33,12 +33,12 @@ public class CenterService extends BaseService implements ICenterServiceFachada{
 	}
 
 	@Override
-	public void save(Center center) {
+	public Center save(Center center) {
 		if(StringUtils.isEmpty(center.getState())) {
 			LOGGER.warn("Atenção, atributo state não preenchido");
 			center.setState("N/A");
 		}
-		repository.save(center);
+		return repository.save(center);
 		
 	}
 

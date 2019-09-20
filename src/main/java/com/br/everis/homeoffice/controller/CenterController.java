@@ -31,7 +31,12 @@ public class CenterController extends BaseController{
 	
 	@PostMapping
 	public ResponseEntity<Void> save(@RequestBody Center center){
-		centerService.save(center);
-		return ResponseEntity.ok().build();
+		Center ret = centerService.save(center);
+		if (ret.getIdCenter() > 0) {
+			return ResponseEntity.ok().build();
+		}
+		else {
+			return ResponseEntity.badRequest().build();
+		}
 	}
 }
