@@ -6,12 +6,14 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.br.everis.homeoffice.model.domain.User;
 import com.br.everis.homeoffice.model.repository.UserRepository;
 import com.br.everis.homeoffice.model.service.fachada.IUserServiceFachada;
 
+@Service
 public class UserService extends BaseService implements IUserServiceFachada {
 	
 	@Autowired

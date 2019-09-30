@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.br.everis.homeoffice.model.domain.User;
 
+
 public interface IUserServiceFachada {
 
 	/**                                                                              

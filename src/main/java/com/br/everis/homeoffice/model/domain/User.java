@@ -7,11 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -60,8 +57,5 @@ public class User {
 	@Column(name = "dateBirth")
 	private LocalDateTime dateBirth;
 	
-	@ManyToOne
-    @JoinColumn(name="id", nullable=false)
-    private Profile profile;
 	
 }
