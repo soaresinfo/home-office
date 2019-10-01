@@ -99,7 +99,7 @@
 
 	<!-- Root Logger -->
 	<root level="INFO">
-		<appender-ref ref="log-aplicacao" />
+		<appender-ref ref="log-desenvolvimento" />
 	</root>
 
 </configuration>
