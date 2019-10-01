@@ -56,8 +56,6 @@ public class Profile {
 	@Column(name = "url")
 	private String url;
 	
-	@OneToMany(mappedBy="profile")
-	private Set<User> user;
 
 	
 
