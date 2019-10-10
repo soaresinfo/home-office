@@ -1,4 +1,4 @@
-package com.br.everis.homeoffice.model.domain;
+package com.br.everis.homeoffice.model.entity;
 
 import java.io.Serializable;
 

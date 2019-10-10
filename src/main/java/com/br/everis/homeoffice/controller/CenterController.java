@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.everis.homeoffice.model.domain.Center;
-import com.br.everis.homeoffice.model.service.fachada.ICenterServiceFachada;
+import com.br.everis.homeoffice.model.entity.Center;
+import com.br.everis.homeoffice.model.service.ServiceFacade.ICenterServiceFacade;
 
 /**
  * @author Marcelo
@@ -22,7 +22,7 @@ import com.br.everis.homeoffice.model.service.fachada.ICenterServiceFachada;
 public class CenterController extends BaseController{
 
 	@Autowired
-	private ICenterServiceFachada centerService;
+	private ICenterServiceFacade centerService;
 	
 	@GetMapping
 	public ResponseEntity<List<Center>> buscaTodos(){

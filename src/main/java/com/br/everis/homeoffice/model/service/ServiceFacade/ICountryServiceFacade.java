@@ -1,42 +1,42 @@
-package com.br.everis.homeoffice.model.service.fachada;                 
+package com.br.everis.homeoffice.model.service.ServiceFacade;
                                                                                   
 import java.util.List;
 
-import com.br.everis.homeoffice.model.domain.Country;                       
+import com.br.everis.homeoffice.model.entity.Country;
                                                                                   
 /**                                                                               
  * @author alan.franco                                                            
  *                                                                                
  */                                                                               
-public interface ICountryServiceFachada {                                             
+public interface ICountryServiceFacade {
                                                                                   
 	/**                                                                              
 	 * @return                                                                       
 	 */                                                                              
-	List<Country> listarTodos() throws Exception;                                       
+	List<Country> listAll() throws Exception;
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     
 	 * @return                                                                       
 	 */                                                                              
-	Country buscarPorId(Long id) throws Exception;                                      
+	Country findById(long id) throws Exception;
                                                                                   
 	/**                                                                              
 	 * @param gerador                                                                
 	 * @return                                                                       
 	 */                                                                              
-	Country salvar(Country country) throws Exception;                                         
+	Country save(Country country) throws Exception;
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     
 	 * @return                                                                       
 	 */                                                                              
-	Country editar(Country country) throws Exception;                                         
+	Country update(Country country) throws Exception;
                                                                                   
 	/**                                                                              
 	 * @param id                                                                     
 	 * @return                                                                       
 	 */                                                                              
-	void deletar(Long id) throws Exception;                                          
+	void delete(long id) throws Exception;
                                                                                   
 }                                                                                 

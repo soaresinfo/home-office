@@ -1,4 +1,4 @@
-package com.br.everis.homeoffice.model.domain;
+package com.br.everis.homeoffice.model.entity;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,24 +27,24 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "tb_country")
-public class Country extends BaseDomain {
+public class Country extends AuditModel {
 
 	private static final long serialVersionUID = -9158814171554795891L;
 
 	@Id
+	@Column(name = "ID_COUNTRY", nullable = false, unique = true)
 	@GeneratedValue
-	private Long id;
+	private long idCountry;
 
-	@Column(name = "descricao")
-	private String descricao;
+	@Column(name = "DESCRIPTION", nullable = true)
+	private String description;
 
-	@Column(name = "status")
+	@Column(name = "STATUS", nullable = false)
 	private Boolean status;
 
-	@JsonProperty("dataCadastro")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	@Column(name = "dataCadastro")
-	private LocalDate dataCadastro;
+	@Column(name = "REGISTRATION_DATE")
+	private LocalDate registration_date;
 
 }

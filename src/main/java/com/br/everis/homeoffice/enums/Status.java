@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.br.everis.homeoffice.model.domain;
+package com.br.everis.homeoffice.enums;
 
 /**
  * @author Marcelo
