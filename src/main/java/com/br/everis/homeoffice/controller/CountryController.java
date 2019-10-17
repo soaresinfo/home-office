@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.everis.homeoffice.model.domain.Country;
-import com.br.everis.homeoffice.model.service.fachada.ICountryServiceFachada;
+import com.br.everis.homeoffice.model.entity.Country;
+import com.br.everis.homeoffice.model.service.ServiceFacade.ICountryServiceFacade;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
 public class CountryController extends BaseController {
 
 	@Autowired
-	private ICountryServiceFachada countryServiceFachada;
+	private ICountryServiceFacade countryServiceFachada;
 
 	public CountryController() {
 		super();
@@ -33,7 +33,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/listar-todos", method = RequestMethod.GET)
 	public ResponseEntity<Object> listarTodos() {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.listarTodos());
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.listAll());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -43,7 +43,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/buscar-por-id", method = RequestMethod.GET)
 	public ResponseEntity<Object> buscarPorId(Long id) {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.buscarPorId(id));
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.findById(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -53,7 +53,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public ResponseEntity<Object> salvar(Country country) {
 		try {
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(countryServiceFachada.salvar(country));
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(countryServiceFachada.save(country));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -63,8 +63,8 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> editar(@PathVariable("id") Long id, @RequestBody Country country) {
 		try {
-			country.setId(id);
-			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.editar(country));
+			country.setIdCountry(id);
+			return ResponseEntity.status(HttpStatus.OK).body(countryServiceFachada.update(country));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
@@ -74,7 +74,7 @@ public class CountryController extends BaseController {
 	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deletar(@PathVariable("id") Long id) {
 		try {
-			countryServiceFachada.deletar(id);
+			countryServiceFachada.delete(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Registro excluído com sucesso!");
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

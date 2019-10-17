@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.br.everis.homeoffice.model.domain.Country;                             
+import com.br.everis.homeoffice.model.entity.Country;
                                                                                         
 /**                                                                                     
  * @author alan.franco                                                                  

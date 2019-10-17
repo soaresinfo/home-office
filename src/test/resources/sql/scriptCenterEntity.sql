@@ -1,0 +1,2 @@
+insert into center (idCenter, status, registrationDate, country, state, city) values (1, 'ATIVO', '2019-09-20', 'BR', 'MG', 'Uberlandia');
+insert into center (idCenter, status, registrationDate, country, state, city) values (2, 'ATIVO', '2019-09-20', 'BR', 'SP', 'Sao Paulo');
